@@ -24,13 +24,13 @@ This was first created to track Youtube subscribers and Twitch followers of the 
 
 **Sheet 3: Streaming Stats**
 - Hermit | Followers | Total Views | Views per Subscriber | Streams Often?
-- Again like Sheet 1, leave all but the header row blank every time you run the script.
-- The script will add some extra rows for manual lookup of streamers who use Mixer or Youtube.
+- *Again like Sheet 1, leave all but the header row blank every time you run the script.*
+- *The script will add some extra rows for manual lookup of streamers who use Mixer or Youtube.*
 
 **Sheet 4: SCNITwitch**
 - Output Name | Login Name | ID | Streams regularly
-- This will be used to pull the data you need and populate the Streaming Stats table.
-- Initially you will want to leave the ID column empty. Fill in all the usernames for the Twitch channels you want to track, one row per channel, and then run the "Get Twitch IDs" method from the Youtube Data menu.
+- *This will be used to pull the data you need and populate the Streaming Stats table.*
+- *Initially you will want to leave the ID column empty. Fill in all the usernames for the Twitch channels you want to track, one row per channel, and then run the "Get Twitch IDs" method from the Youtube Data menu.*
 
 # First Run
 
