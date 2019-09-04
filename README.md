@@ -1,5 +1,5 @@
 # hcstatscompiler
-Google Apps Script for pulling subscriber/follower stats from Youtube and Twitch.
+Google Apps Script for pulling subscriber/follower stats from Youtube and Twitch into Google Sheets.
 
 # Origins
 
@@ -9,7 +9,7 @@ This was first created to track Youtube subscribers and Twitch followers of the 
 
 - **Youtube API key.** Since this script will be using Google Sheets you don't actually need to insert the key into the script.
 - **Twitch API key.** The Client ID generated upon creation of a new application will need to be inserted in line 9 and 27 of StatTracker.gs.
-- A Google Spreadsheet with 4 tabs, named and with columns as follows:
+- A Google Spreadsheet with 4 tabs, named and with columns as follows (refer to sample "Hermitcraft Stats Youtube.xlsx"):
 
 **Sheet 1: Stats**
 - Hermit | Followers | Total Views | Views Per Subscriber | Country
