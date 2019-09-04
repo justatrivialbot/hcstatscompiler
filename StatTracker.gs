@@ -1,12 +1,12 @@
-// Note: Apps Script automatically requests authorization
-// based on the API's used in the code.
+// Note: Apps Script automatically requests authorization based on the API's used in the code.
+// See readme at github.com/justatrivialbot/hcstatscompiler for install docs.
 
-function getTwitchID() {
+function getTwitchID() { // retrieves channel ID based on channel login name
   var refsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SCNITwitch');
   var twitchApiOptions = {
     'headers': {
       'Accept': 'application/vnd.twitchtv.v5+json',
-      'Client-ID': 'ynufpr9ea8uxxmrzp1loab0gy0alxz'
+      'Client-ID': 'YOUR API KEY HERE'
     }
   };
   for (var i = 2; i < 23; i++) {
@@ -18,7 +18,7 @@ function getTwitchID() {
   }
 }
 
-function getTwitchData() { // Pulls twitch data to Streaming Stats
+function getTwitchData() { // Pulls twitch data to Streaming Stats sheet
   var refsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SCNITwitch');
   var datasheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Streaming Stats');
   var twitchApiOptions = {
@@ -42,17 +42,17 @@ function getTwitchData() { // Pulls twitch data to Streaming Stats
     var datarow = [Hermitname, followers, totalviews, vpf, streamYN];
     datasheet.appendRow(datarow);
   }
-  datasheet.appendRow(["Mixer User 1"]);
+  datasheet.appendRow(["Mixer User 1"]); // replace Mixer User ID with a real name. Doesn't pull anything, just adds reminder rows. Ln 45-50 can be deleted.
   datasheet.appendRow(["Mixer User 2"]);
   datasheet.appendRow(["Mixer User 3"]);
-  datasheet.appendRow(["YT Streamer 1","Youtube"]);
+  datasheet.appendRow(["YT Streamer 1","Youtube"]); // Replace YT Streamer 1 with a real name
   datasheet.appendRow(["YT Streamer 2","Youtube"]);
   datasheet.appendRow(["YT Streamer 3","Youtube"]);
   datasheet.sort(1);
 }
 
 
-function channelsListById(part, params, HermitName, CountryName) { // 2nd part of Youtube pull
+function channelsListById(part, params, HermitName, CountryName) { // Youtube getter method
   var response = YouTube.Channels.list(part, params);
   var channel = response.items[0];
   var vps = parseInt(channel.statistics.viewCount) / parseInt(channel.statistics.subscriberCount);
@@ -60,7 +60,7 @@ function channelsListById(part, params, HermitName, CountryName) { // 2nd part o
   SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Stats').appendRow(dataRow);
 }
                  
-function getHermitData() { // First part of Youtube pull
+function getHermitData() { // First part of Youtube pull, retrieves and passes data from CNID sheet to getter method
   var refsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Channel Names and IDs');
   var resultsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Stats');
   var channelList = refsheet.getRange("B2:B23").getValues();
