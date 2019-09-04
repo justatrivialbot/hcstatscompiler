@@ -8,7 +8,7 @@ This was first created to track Youtube subscribers and Twitch followers of the 
 # Prerequisites
 
 - Youtube API key. Since this script will be using Google Sheets you don't actually need to insert the key into the script.
-- Twitch API key. The Client ID generated upon creation of a new application will need to be inserted in line 9 and 32 of StatTracker.gs.
+- Twitch API key. The Client ID generated upon creation of a new application will need to be inserted in line 9 and 27 of StatTracker.gs.
 - A Google Spreadsheet with 4 tabs, named and with columns as follows:
 
 **Sheet 1: Stats**
@@ -34,7 +34,7 @@ This was first created to track Youtube subscribers and Twitch followers of the 
 
 # Setup
 
-- Enter your Twitch API key on lines 9 and 32.
+- Enter your Twitch API key on lines 9 and 27.
 - Obtain your Youtube channel IDs. This is the randomized string of numbers used as the absolute link to the channel. You can look them up using the built-in "Try this API" testbed at [Google's documentation for their Youtube API](https://developers.google.com/youtube/v3/docs/channels/list). Enter "id" in the part field and the natural language username in the forUsername field, then hit enter. The results you need will be returned at the bottom of the app in an id field as part of a JSON encoded string. Enter these results on the Channel Names and IDs tab in the Channel ID column.
 - Obtain Twitch channel ids for each channel you want to track using the Get Twitch IDs option in the Youtube Data menu.
 - If you would like to add blank rows for streamers on other services such as Mixer for manual lookup, replace "Mixer User 1" and "YT Streamer 1" etc with the names you want to appear.
