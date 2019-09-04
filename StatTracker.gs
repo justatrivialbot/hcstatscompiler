@@ -1,6 +1,23 @@
 // Note: Apps Script automatically requests authorization
 // based on the API's used in the code.
 
+function getTwitchID() {
+  var refsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SCNITwitch');
+  var twitchApiOptions = {
+    'headers': {
+      'Accept': 'application/vnd.twitchtv.v5+json',
+      'Client-ID': 'ynufpr9ea8uxxmrzp1loab0gy0alxz'
+    }
+  };
+  for (var i = 2; i < 23; i++) {
+    var channelName = refsheet.getRange('B' + i).getValue();
+    var idres = UrlFetchApp.fetch('https://api.twitch.tv/helix/users?login=' + channelName, twitchApiOptions);
+    var jObj = JSON.parse(idres);
+    var channelID = jObj.data[0].id;
+    refsheet.getRange('C' + i).setValue(channelID);
+  }
+}
+
 function getTwitchData() { // Pulls twitch data to Streaming Stats
   var refsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SCNITwitch');
   var datasheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Streaming Stats');
@@ -25,12 +42,12 @@ function getTwitchData() { // Pulls twitch data to Streaming Stats
     var datarow = [Hermitname, followers, totalviews, vpf, streamYN];
     datasheet.appendRow(datarow);
   }
-  datasheet.appendRow(["ImpulseSV*"]);
-  datasheet.appendRow(["TangoTek*"]);
-  datasheet.appendRow(["Zedaph*"]);
-  datasheet.appendRow(["Grian","Youtube"]);
-  datasheet.appendRow(["Mumbo","Youtube"]);
-  datasheet.appendRow(["Python","Youtube"]);
+  datasheet.appendRow(["Mixer User 1"]);
+  datasheet.appendRow(["Mixer User 2"]);
+  datasheet.appendRow(["Mixer User 3"]);
+  datasheet.appendRow(["YT Streamer 1","Youtube"]);
+  datasheet.appendRow(["YT Streamer 2","Youtube"]);
+  datasheet.appendRow(["YT Streamer 3","Youtube"]);
   datasheet.sort(1);
 }
 
@@ -67,7 +84,8 @@ function onOpen() { // runs on spreadsheet load, creates menu
   ui.createMenu('YouTube Data')
   .addItem('Add channel data', 'getChannel')
   .addSeparator()
-  .addItem('Add Hermit Youtube data', 'getHermitData')
-  .addItem('Add Hermit Twitch data', 'getTwitchData')
+  .addItem('Get Twitch IDs', 'getTwitchID')
+  .addItem('Pull Youtube data', 'getHermitData')
+  .addItem('Pull Twitch data', 'getTwitchData')
   .addToUi();
 }
