@@ -12,7 +12,7 @@ This was first created to track Youtube subscribers and Twitch followers of the 
 - A Google Spreadsheet with 4 tabs, named and with columns as follows:
 
 **Sheet 1: Stats**
-- Username, Followers, Total Views, Views Per Subscriber, Country
+- Hermit, Followers, Total Views, Views Per Subscriber, Country
 - Leave all other rows blank and clear all but the header row every time you run the script.
 
 **Sheet 2: Channel Names and IDs**
@@ -23,7 +23,7 @@ This was first created to track Youtube subscribers and Twitch followers of the 
 - Country of origin is just sugar.
 
 **Sheet 3: Streaming Stats**
-- Username, Followers, Total Views, Views per Subscriber, Streams Often?
+- Hermit, Followers, Total Views, Views per Subscriber, Streams Often?
 - Again like Sheet 1, leave all but the header row blank every time you run the script.
 - The script will add some extra rows for manual lookup of streamers who use Mixer or Youtube.
 
